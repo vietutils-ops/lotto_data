@@ -1,0 +1,39 @@
+# Validates the repository on every push and pull request. It never contacts
+# an official source: GitHub-hosted runners are not assumed to be allowed to
+# reach them. Collection runs on a maintainer's machine or a self-hosted runner.
+name: validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Validate schemas, rulesets, draws, metadata, catalog and checksums
+        run: python -m scripts.validate
+      - name: Generated files are up to date
+        run: |
+          python -m scripts.build | tee build.out
+          if grep -qE '"(rulesets|draws|source)_changed": true' build.out; then
+            echo "::error::Generated files are out of date: run 'python -m scripts.build --write' and commit the result."
+            exit 1
+          fi
+      - name: Checksums (coreutils)
+        run: sha256sum -c checksums/SHA256SUMS
+      - name: Health (offline)
+        run: python -m scripts.health_check

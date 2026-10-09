@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "description": "Draw IDs knowingly absent from a published dataset. An entry downgrades the 'missing_draw_id' error of a numbered game to a warning; it never adds or invents data. Every entry must state why the draw is missing and how to resolve it. Remove the entry once the draw is backfilled.",
+  "gaps": {
+    "power655": [
+      {
+        "draw_id": "00944",
+        "reason": "The bootstrap source (vietvudanh/vietlott-data at a632f03feeb227a74f8da70979a31fd4126efa83, data/power655.jsonl line 780) files a Mega 6/45 result under this Power 6/55 ID: date 2022-09-23 (a Friday, not a Power draw day), six numbers [1, 12, 21, 28, 30, 44] and no bonus number, identical to Mega 6/45 draw 00944 in the same source. That record was rejected and quarantined (provenance/quarantine/). The genuine Power 6/55 draw 00944 (between draw 00943 on 2023-10-12 and draw 00945 on 2023-10-17) is not present in the source.",
+        "recorded_at": "2026-10-07",
+        "resolution": "Collect it from the official source from a network that can reach it (python -m scripts.update --game power655 --max-pages 80 --write), then delete this entry and re-run python -m scripts.validate."
+      }
+    ]
+  }
+}

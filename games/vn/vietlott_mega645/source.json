@@ -1,0 +1,30 @@
+{
+  "schema_version": 2,
+  "game_code": "mega645",
+  "display_name": "Mega 6/45",
+  "official_source": {
+    "name": "Vietlott",
+    "url": "https://vietlott.vn/",
+    "history_url": "https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/winning-number-645"
+  },
+  "distribution_mode": "public",
+  "compliance": {
+    "data_usage_confirmed_by_owner": "2026-10-07",
+    "terms_url": null,
+    "terms_reviewed_at": null,
+    "robots_txt_checked_at": null,
+    "notes": "The repository owner confirmed the data usage terms for the Vietlott history (PROVENANCE.md). The official site's terms and robots.txt could not be reviewed from the build environment, whose network policy blocks the site; the collector reads robots.txt on every run and stops when a rule disallows it."
+  },
+  "data_origin": {
+    "original_source": "Publicly available Vietlott result information (https://vietlott.vn)",
+    "acquisition_method": "conversion",
+    "source_name": "viettran88/vietlott-data",
+    "source_url": "https://github.com/viettran88/vietlott-data",
+    "source_dataset_version": "2026.10.07.001",
+    "source_sha256": "32d52e0924fb1e737a2136d451e59226a8617246e38d7e4c21c9089fc846acd9",
+    "retrieved_at": "2026-10-07T14:33:00Z",
+    "normalized_at": "2026-10-08T17:26:40Z",
+    "notes": "Converted from the Vietlott-only repository (schema 1) without re-collecting; every draw is identical. That repository's records were bootstrapped from vietvudanh/vietlott-data at a632f03feeb227a74f8da70979a31fd4126efa83 (see PROVENANCE.md). Full history: metadata/audit_log.jsonl."
+  },
+  "disclaimer": "Historical results for statistical research. Not an official source; not affiliated with the operator. Always check results with the official source."
+}

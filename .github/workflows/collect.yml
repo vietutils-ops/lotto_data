@@ -1,0 +1,56 @@
+# OPTIONAL. Runs the collector on a SELF-HOSTED runner whose network can reach
+# the official sources. Disabled by default: it runs only when dispatched
+# manually (or on schedule if you uncomment the cron). Review each source's
+# terms and robots.txt record in docs/sources.md before automating it.
+#
+# Requirements: a self-hosted runner labelled "lotto-collector", and a
+# repository setting that lets GITHUB_TOKEN push (or a deploy key).
+name: collect
+
+on:
+  workflow_dispatch:
+    inputs:
+      games:
+        description: "Game codes separated by spaces, or 'all'"
+        default: "all"
+      push:
+        description: "Push validated changes"
+        type: boolean
+        default: false
+  # schedule:
+  #   - cron: "45 14 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collector
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: [self-hosted, lotto-collector]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install --user -r requirements-dev.txt
+      - name: Collect, validate and write
+        env:
+          GAMES: ${{ inputs.games }}
+        run: |
+          args=()
+          if [ "$GAMES" = "all" ]; then args=(--all); else
+            for g in $GAMES; do args+=(--game "$g"); done; fi
+          python3 -m scripts.update "${args[@]}" --write --run-tests
+      - name: Full validation
+        run: |
+          python3 -m scripts.validate
+          sha256sum -c checksums/SHA256SUMS
+      - name: Commit and push
+        if: ${{ inputs.push }}
+        run: |
+          git config user.name "lotto-data collector"
+          git config user.email "collector@users.noreply.github.com"
+          git add catalog.json games checksums metadata
+          git diff --cached --quiet || git commit -m "data: collector update"
+          git push

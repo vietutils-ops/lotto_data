@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "game_code": "mega645",
+  "country_code": "VN",
+  "operator_code": "vietlott",
+  "dataset_version": "2026.10.08.001",
+  "dataset_updated_at": "2026-10-08T17:26:40Z",
+  "record_count": 1375,
+  "sha256": "f63f7bc6b22a5d80637bd974a1424af4f9986439b37b695bf725890df0a45742",
+  "byte_size": 276347,
+  "rulesets_sha256": "9bc735c813c303bd145e032af5b9ea7a4dd8037fbfadfe5ad9abda28c72d164b",
+  "first_draw_id": "00198",
+  "first_draw_date": "2017-10-25",
+  "latest_draw_id": "01572",
+  "latest_draw_date": "2026-10-07",
+  "missing_draw_ids": [],
+  "ruleset_ids": [
+    "mega645_v1"
+  ],
+  "provenance": {
+    "original_source": "Publicly available Vietlott result information (https://vietlott.vn)",
+    "acquisition_method": "conversion",
+    "source_name": "viettran88/vietlott-data",
+    "source_url": "https://github.com/viettran88/vietlott-data",
+    "source_dataset_version": "2026.10.07.001",
+    "source_sha256": "32d52e0924fb1e737a2136d451e59226a8617246e38d7e4c21c9089fc846acd9",
+    "retrieved_at": "2026-10-07T14:33:00Z",
+    "normalized_at": "2026-10-08T17:26:40Z",
+    "notes": "Converted from the Vietlott-only repository (schema 1) without re-collecting; every draw is identical. That repository's records were bootstrapped from vietvudanh/vietlott-data at a632f03feeb227a74f8da70979a31fd4126efa83 (see PROVENANCE.md). Full history: metadata/audit_log.jsonl."
+  },
+  "generator": "lottostat-lotto-data/2.0.0"
+}

@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/viettran88/lotto-data/main/schemas/source.schema.json",
+  "title": "source.json of a game: origin and terms (schema 2)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "game_code",
+    "display_name",
+    "official_source",
+    "distribution_mode",
+    "compliance",
+    "data_origin",
+    "disclaimer"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "game_code": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,39}$"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "official_source": {
+      "type": "object",
+      "required": [
+        "name",
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "history_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "distribution_mode": {
+      "enum": [
+        "public",
+        "restricted",
+        "disabled"
+      ]
+    },
+    "compliance": {
+      "type": "object",
+      "required": [
+        "terms_url",
+        "terms_reviewed_at",
+        "robots_txt_checked_at",
+        "notes"
+      ],
+      "properties": {
+        "terms_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "terms_reviewed_at": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "robots_txt_checked_at": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_usage_confirmed_by_owner": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "additionalProperties": true
+    },
+    "data_origin": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "original_source",
+            "acquisition_method"
+          ],
+          "properties": {
+            "original_source": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "acquisition_method": {
+              "enum": [
+                "conversion",
+                "collector",
+                "manual_import"
+              ]
+            },
+            "source_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source_url": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "retrieved_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2000
+            }
+          },
+          "additionalProperties": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "disclaimer": {
+      "type": "string"
+    }
+  }
+}

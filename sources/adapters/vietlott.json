@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "adapter": "vietlott",
+  "description": "Paginated result listing used by the public vietlott.vn result pages (the same requests the site's own result table performs). Endpoint paths, keys and the page size are site details that can change without notice; verify with `python -m scripts.health_check --live --game <code>` before relying on them. Reference: parameters as documented by the MIT-licensed vietvudanh/vietlott-data crawler (see PROVENANCE.md). Same parameters as the Vietlott-only repository (vietlott-data).",
+  "base_url": "https://vietlott.vn",
+  "method_header": "ServerSideDrawResult",
+  "render_info": {
+    "SiteId": "main.frontend.vi",
+    "SiteAlias": "main.vi",
+    "UserSessionId": "",
+    "SiteLang": "vi",
+    "IsPageDesign": false,
+    "ExtraParam1": "",
+    "ExtraParam2": "",
+    "ExtraParam3": "",
+    "SiteURL": "",
+    "WebPage": null,
+    "SiteName": "Vietlott",
+    "OrgPageAlias": null,
+    "PageAlias": null,
+    "RefKey": null,
+    "FullPageAlias": null,
+    "System": 1
+  },
+  "games": {
+    "mega645": {
+      "endpoint": "/ajaxpro/Vietlott.PlugIn.WebParts.Game645CompareWebPart,Vietlott.PlugIn.WebParts.ashx",
+      "key": "8290fce2",
+      "referer_path": "/vi/trung-thuong/ket-qua-trung-thuong/winning-number-645",
+      "page_size": 6
+    },
+    "power655": {
+      "endpoint": "/ajaxpro/Vietlott.PlugIn.WebParts.Game655CompareWebPart,Vietlott.PlugIn.WebParts.ashx",
+      "key": "23bbd667",
+      "referer_path": "/vi/trung-thuong/ket-qua-trung-thuong/winning-number-655",
+      "page_size": 6
+    }
+  }
+}

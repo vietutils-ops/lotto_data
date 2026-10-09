@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "description": "Every game of the repository: identity, schedule (ISO weekdays in the game's IANA time zone), draw ID format, official source, distribution mode, compliance record and the source adapter that collects it. Rules live in each game's rulesets.json. Edit by hand; the tools only read it.",
+  "games": [
+    {
+      "game_code": "mega645",
+      "country_code": "VN",
+      "operator_code": "vietlott",
+      "display_name": "Mega 6/45",
+      "path": "games/vn/vietlott_mega645",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "draw_weekdays": [
+        3,
+        5,
+        7
+      ],
+      "draw_id_format": {
+        "type": "sequential",
+        "digits": 5
+      },
+      "historical_coverage_start": "2016-07-01",
+      "distribution_mode": "public",
+      "adapter": "vietlott",
+      "official_source": {
+        "name": "Vietlott",
+        "url": "https://vietlott.vn/",
+        "history_url": "https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/winning-number-645"
+      },
+      "compliance": {
+        "data_usage_confirmed_by_owner": "2026-10-07",
+        "terms_url": null,
+        "terms_reviewed_at": null,
+        "robots_txt_checked_at": null,
+        "notes": "The repository owner confirmed the data usage terms for the Vietlott history (PROVENANCE.md). The official site's terms and robots.txt could not be reviewed from the build environment, whose network policy blocks the site; the collector reads robots.txt on every run and stops when a rule disallows it."
+      },
+      "vietlott_data_product": "mega645"
+    },
+    {
+      "game_code": "power655",
+      "country_code": "VN",
+      "operator_code": "vietlott",
+      "display_name": "Power 6/55",
+      "path": "games/vn/vietlott_power655",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "draw_weekdays": [
+        2,
+        4,
+        6
+      ],
+      "draw_id_format": {
+        "type": "sequential",
+        "digits": 5
+      },
+      "historical_coverage_start": "2017-07-01",
+      "distribution_mode": "public",
+      "adapter": "vietlott",
+      "official_source": {
+        "name": "Vietlott",
+        "url": "https://vietlott.vn/",
+        "history_url": "https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/winning-number-655"
+      },
+      "compliance": {
+        "data_usage_confirmed_by_owner": "2026-10-07",
+        "terms_url": null,
+        "terms_reviewed_at": null,
+        "robots_txt_checked_at": null,
+        "notes": "The repository owner confirmed the data usage terms for the Vietlott history (PROVENANCE.md). The official site's terms and robots.txt could not be reviewed from the build environment, whose network policy blocks the site; the collector reads robots.txt on every run and stops when a rule disallows it."
+      },
+      "vietlott_data_product": "power655"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-08T17:26:40Z",
+  "games": [
+    {
+      "game_code": "mega645",
+      "country_code": "VN",
+      "operator_code": "vietlott",
+      "dataset_version": "2026.10.08.001",
+      "draws_url": "games/vn/vietlott_mega645/draws.json",
+      "metadata_url": "games/vn/vietlott_mega645/metadata.json",
+      "rulesets_url": "games/vn/vietlott_mega645/rulesets.json",
+      "source_url": "games/vn/vietlott_mega645/source.json",
+      "distribution_mode": "public",
+      "draw_count": 1375,
+      "first_draw_date": "2017-10-25",
+      "latest_draw_date": "2026-10-07"
+    },
+    {
+      "game_code": "power655",
+      "country_code": "VN",
+      "operator_code": "vietlott",
+      "dataset_version": "2026.10.08.001",
+      "draws_url": "games/vn/vietlott_power655/draws.json",
+      "metadata_url": "games/vn/vietlott_power655/metadata.json",
+      "rulesets_url": "games/vn/vietlott_power655/rulesets.json",
+      "source_url": "games/vn/vietlott_power655/source.json",
+      "distribution_mode": "public",
+      "draw_count": 1406,
+      "first_draw_date": "2017-08-01",
+      "latest_draw_date": "2026-10-06"
+    }
+  ]
+}

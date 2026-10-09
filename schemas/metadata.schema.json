@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/viettran88/lotto-data/main/schemas/metadata.schema.json",
+  "title": "metadata.json of a game (schema 2)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "game_code",
+    "country_code",
+    "operator_code",
+    "dataset_version",
+    "dataset_updated_at",
+    "record_count",
+    "sha256",
+    "byte_size",
+    "rulesets_sha256",
+    "first_draw_id",
+    "first_draw_date",
+    "latest_draw_id",
+    "latest_draw_date",
+    "missing_draw_ids",
+    "ruleset_ids",
+    "provenance",
+    "generator"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "game_code": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,39}$"
+    },
+    "country_code": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "operator_code": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,39}$"
+    },
+    "dataset_version": {
+      "type": "string",
+      "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}\\.\\d{3}$"
+    },
+    "dataset_updated_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50000
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "byte_size": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "rulesets_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "first_draw_id": {
+      "type": "string",
+      "pattern": "^\\d{1,12}$"
+    },
+    "first_draw_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "latest_draw_id": {
+      "type": "string",
+      "pattern": "^\\d{1,12}$"
+    },
+    "latest_draw_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "missing_draw_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\d{1,12}$"
+      },
+      "uniqueItems": true
+    },
+    "ruleset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{2,63}$"
+      },
+      "minItems": 1,
+      "maxItems": 50,
+      "uniqueItems": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "original_source",
+        "acquisition_method"
+      ],
+      "properties": {
+        "original_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "acquisition_method": {
+          "enum": [
+            "conversion",
+            "collector",
+            "manual_import"
+          ]
+        },
+        "source_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retrieved_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalized_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2000
+        }
+      },
+      "additionalProperties": true
+    },
+    "generator": {
+      "type": "string"
+    }
+  }
+}

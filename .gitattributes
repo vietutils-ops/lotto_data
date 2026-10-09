@@ -1,0 +1,7 @@
+* text=auto eol=lf
+# Published files are verified byte for byte (SHA-256): never convert line endings.
+catalog.json -text
+games/** -text
+checksums/* -text
+metadata/** -text
+tests/fixtures/** -text

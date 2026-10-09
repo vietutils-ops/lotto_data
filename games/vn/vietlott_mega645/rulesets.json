@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "game_code": "mega645",
+  "rulesets": [
+    {
+      "ruleset_id": "mega645_v1",
+      "effective_from": "2016-07-01",
+      "effective_to": null,
+      "ball_sets": [
+        {
+          "id": "main",
+          "kind": "main",
+          "count": 6,
+          "min": 1,
+          "max": 45,
+          "field": "main_numbers",
+          "player_selectable": true,
+          "label": {
+            "en": "Main numbers",
+            "vi": "Bộ số chính"
+          }
+        }
+      ],
+      "notes": "Six numbers from 1–45, no extra ball. effective_from is a lower bound; the published history starts at draw 00198 (2017-10-25)."
+    }
+  ]
+}

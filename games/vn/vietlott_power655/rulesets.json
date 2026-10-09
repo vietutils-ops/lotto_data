@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "game_code": "power655",
+  "rulesets": [
+    {
+      "ruleset_id": "power655_v1",
+      "effective_from": "2017-08-01",
+      "effective_to": null,
+      "ball_sets": [
+        {
+          "id": "main",
+          "kind": "main",
+          "count": 6,
+          "min": 1,
+          "max": 55,
+          "field": "main_numbers",
+          "player_selectable": true,
+          "label": {
+            "en": "Main numbers",
+            "vi": "Bộ số chính"
+          }
+        },
+        {
+          "id": "bonus",
+          "kind": "same_pool_extra",
+          "count": 1,
+          "min": 1,
+          "max": 55,
+          "field": "bonus_number",
+          "player_selectable": false,
+          "label": {
+            "en": "Bonus number",
+            "vi": "Số đặc biệt"
+          }
+        }
+      ],
+      "notes": "Six numbers from 1–55 plus a bonus number drawn from the remaining balls. First draw 00001 (2017-08-01)."
+    }
+  ]
+}
