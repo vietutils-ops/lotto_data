@@ -33,7 +33,7 @@ def test_first_collection_publishes_a_valid_game(repo, games, fake_source):
     assert published.metadata["dataset_version"] == "2026.10.08.001"
     assert published.metadata["ruleset_ids"] == ["zz_starlotto_v2"]
     assert published.metadata["provenance"]["acquisition_method"] == "collector"
-    catalog = json.loads(repo.catalog_file.read_text())
+    catalog = json.loads(repo.catalog_file.read_text(encoding="utf-8"))
     assert [g["game_code"] for g in catalog["games"]] == ["zz_starlotto"]
     report = validate_repository(repo, NOW)
     assert report.ok, report.lines()
@@ -87,7 +87,7 @@ def test_rejected_rows_are_quarantined_and_all_rejected_fails(repo, games, fake_
     result = run(repo, "zz_starlotto")
     assert result.written and len(result.rejected) == 2
     quarantined = list(repo.quarantine_dir.glob("zz_starlotto_*.json"))
-    assert len(quarantined) == 1 and "page 0 row 4" in quarantined[0].read_text()
+    assert len(quarantined) == 1 and "page 0 row 4" in quarantined[0].read_text(encoding="utf-8")
     fake_source("zz_starlotto", [], rejected=[RejectedRecord("page 0 row 1", "unreadable", [])])
     with pytest.raises(ParseFailed):
         run(repo, "zz_starlotto", now=NOW + timedelta(hours=1))
@@ -110,7 +110,7 @@ def test_numbered_games_need_known_gaps_and_vietlott_numbers_are_checked(repo, g
 
 
 def test_restricted_games_are_never_published(repo, games, fake_source):
-    registry = json.loads(repo.registry_file.read_text())
+    registry = json.loads(repo.registry_file.read_text(encoding="utf-8"))
     for entry in registry["games"]:
         if entry["game_code"] == "zz_starlotto":
             entry["distribution_mode"] = "restricted"

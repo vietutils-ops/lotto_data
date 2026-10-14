@@ -11,7 +11,7 @@ from tests.conftest import FICTIONAL_RULESETS
 
 
 def vietlott(code: str, folder: str):
-    return parse_rulesets(json.loads((ROOT / "games" / "vn" / folder / "rulesets.json").read_text()), code)
+    return parse_rulesets(json.loads((ROOT / "games" / "vn" / folder / "rulesets.json").read_text(encoding="utf-8")), code)
 
 
 def record(**overrides):

@@ -50,8 +50,8 @@ its `ruleset_version`; the app validates it under that ruleset exactly as
 ## Setup
 
 ```bash
-python3 -m venv .venv && . .venv/bin/activate
-pip install -r requirements-dev.txt     # jsonschema, beautifulsoup4, pytest
+python3 -m venv .venv && . .venv/bin/activate   # Windows: python -m venv .venv && .venv\Scripts\activate
+pip install -r requirements-dev.txt     # jsonschema, beautifulsoup4, tzdata, pytest
 python -m pytest -q
 ```
 

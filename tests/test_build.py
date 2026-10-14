@@ -47,13 +47,13 @@ def test_a_rule_change_bumps_the_version_and_relabelling_needs_acceptance(repo, 
 
 
 def test_a_restricted_game_is_listed_with_its_rules_and_source_only(repo, games):
-    registry = json.loads(repo.registry_file.read_text())
+    registry = json.loads(repo.registry_file.read_text(encoding="utf-8"))
     for entry in registry["games"]:
         if entry["game_code"] == "zz_starlotto":
             entry["distribution_mode"] = "restricted"
     write_json(repo.registry_file, registry)
     assert build.main(["--write"]) == 0
-    catalog = json.loads(repo.catalog_file.read_text())
+    catalog = json.loads(repo.catalog_file.read_text(encoding="utf-8"))
     entry = next(g for g in catalog["games"] if g["game_code"] == "zz_starlotto")
     assert entry["distribution_mode"] == "restricted" and "draw_count" not in entry
     game = load_games(repo)["zz_starlotto"]
@@ -68,7 +68,7 @@ def test_a_missing_or_unreadable_source_file_is_rebuilt(repo, published_star, ca
     assert build.main([]) == 0
     assert '"source_changed": true' in capsys.readouterr().out
     assert not path.exists(), "a dry run writes nothing"
-    path.write_text("{")
+    path.write_text("{", encoding="utf-8")
     assert build.main(["--write"]) == 0
     assert path.read_bytes() == expected
     assert validate_repository(repo, NOW).ok

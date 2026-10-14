@@ -37,3 +37,22 @@ jobs:
         run: sha256sum -c checksums/SHA256SUMS
       - name: Health (offline)
         run: python -m scripts.health_check
+
+  # Maintainers may run the tools on Windows, which has no system time zone
+  # database and reads text as cp1252 unless told otherwise. The tests and the
+  # repository check must pass there too (the checkout also proves that
+  # .gitattributes keeps the published files byte for byte).
+  validate-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Validate schemas, rulesets, draws, metadata, catalog and checksums
+        run: python -m scripts.validate

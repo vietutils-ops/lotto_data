@@ -39,7 +39,7 @@ def test_reading_is_strict(games):
 
 def test_unreadable_files_are_reported_like_every_other_error(tmp_path):
     broken = tmp_path / "broken.json"
-    broken.write_text("{")
+    broken.write_text("{", encoding="utf-8")
     for path in (broken, tmp_path / "missing.json"):
         with pytest.raises(LottoDataError) as info:
             read_json_file(path)

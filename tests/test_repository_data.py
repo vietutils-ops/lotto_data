@@ -20,7 +20,7 @@ def test_the_repository_validates():
 
 def test_the_catalog_lists_every_public_game_with_data():
     layout = RepoLayout(ROOT)
-    catalog = json.loads(layout.catalog_file.read_text())
+    catalog = json.loads(layout.catalog_file.read_text(encoding="utf-8"))
     games = load_games(layout)
     with_data = sorted(code for code, g in games.items() if g.publishes_data and layout.draws_file(g).is_file())
     assert sorted(g["game_code"] for g in catalog["games"]) == with_data
@@ -32,7 +32,7 @@ def test_vietlott_draws_are_identical_to_the_vietlott_repository(code):
     layout = RepoLayout(ROOT)
     game = load_games(layout)[code]
     ours = [d.to_record() for d in load_published(layout, game).dataset.draws]
-    theirs = json.loads((VIETLOTT_DATA / "data" / f"{code}.json").read_text())["draws"]
+    theirs = json.loads((VIETLOTT_DATA / "data" / f"{code}.json").read_text(encoding="utf-8"))["draws"]
     stripped = [{k: r[k] for k in ("draw_id", "draw_date", "main_numbers", "bonus_number")} for r in ours]
     assert stripped == theirs
     assert {r["ruleset_version"] for r in ours} == {f"{code}_v1"}
