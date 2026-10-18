@@ -33,7 +33,12 @@ def test_vietlott_draws_are_identical_to_the_vietlott_repository(code):
     game = load_games(layout)[code]
     ours = [d.to_record() for d in load_published(layout, game).dataset.draws]
     theirs = json.loads((VIETLOTT_DATA / "data" / f"{code}.json").read_text(encoding="utf-8"))["draws"]
-    stripped = [{k: r[k] for k in ("draw_id", "draw_date", "main_numbers", "bonus_number")} for r in ours]
-    assert stripped == theirs
+    stripped = {r["draw_id"]: {k: r[k] for k in ("draw_id", "draw_date", "main_numbers", "bonus_number")} for r in ours}
+    # The two repositories are updated separately: every draw of the Vietlott
+    # repository up to the latest one here must be here, unchanged.
+    latest = int(ours[-1]["draw_id"])
+    shared = [r for r in theirs if int(r["draw_id"]) <= latest]
+    assert shared
+    assert [stripped.get(r["draw_id"]) for r in shared] == shared
     assert {r["ruleset_version"] for r in ours} == {f"{code}_v1"}
     assert all(r["supplementary_numbers"] == [] and r["special_numbers"] == {} for r in ours)
