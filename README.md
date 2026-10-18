@@ -88,13 +88,16 @@ Network settings (environment): `LOTTO_HTTP_TIMEOUT`, `LOTTO_RETRY_COUNT`,
 
 ## Publishing
 
+Step by step, for Windows, with what to do about each error:
+[docs/updating-data.md](docs/updating-data.md).
+
 Collection needs a network that can reach the official sources: a
 maintainer's machine, or the optional self-hosted runner workflow
 (`.github/workflows/collect.yml`). GitHub-hosted CI only validates
 (`.github/workflows/validate.yml`). After a run with `--write`:
 
 ```bash
-python -m scripts.validate && sha256sum -c checksums/SHA256SUMS
+python -m scripts.validate && sha256sum -c checksums/SHA256SUMS   # Windows: scripts.validate checks the checksums too
 git add catalog.json games checksums metadata && git commit -m "data: <games> update"
 ```
 
