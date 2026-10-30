@@ -27,7 +27,14 @@ reaches the app until you push.
 3. **The repository.** Skip this if you already have the folder:
    ```
    cd /d C:\Workspace
-   git clone https://github.com/viettran88/lotto-data.git Lotto_Data
+   git clone https://github.com/vietutils-ops/lotto_data.git Lotto_Data
+   ```
+   A folder cloned from the old address (`viettran88/lotto-data`) still
+   pushes there. Point it at this repository once:
+   ```
+   cd /d C:\Workspace\Lotto_Data
+   git remote set-url origin https://github.com/vietutils-ops/lotto_data.git
+   git pull
    ```
 4. **The tools' environment**, a Python folder named `.venv` inside the
    repository (Git ignores it):
@@ -174,7 +181,7 @@ like `main -> main`.
 
 ### Step 7. Check GitHub
 
-Open <https://github.com/viettran88/lotto-data/actions>. The `validate` run of
+Open <https://github.com/vietutils-ops/lotto_data/actions>. The `validate` run of
 your commit turns green within about a minute (one Linux and one Windows job).
 If it turns red, ask for help with the link to the run.
 
