@@ -23,7 +23,7 @@ from .errors import AccessDenied, RateLimited, RobotsDisallowed, SourceUnavailab
 #: Product token matched against robots.txt groups.
 ROBOTS_TOKEN = "LottoStat-DataCollector"
 DEFAULT_USER_AGENT = (
-    f"{ROBOTS_TOKEN}/2.0 (+https://github.com/viettran88/lotto-data; "
+    f"{ROBOTS_TOKEN}/2.0 (+https://github.com/vietutils-ops/lotto_data; "
     "historical statistics dataset maintenance)"
 )
 RETRYABLE_STATUS = {429, 500, 502, 503, 504}

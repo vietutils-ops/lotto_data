@@ -1,4 +1,4 @@
-# lotto-data — global historical lottery results for LottoStat
+# lotto_data — global historical lottery results for LottoStat
 
 Static, versioned, checksummed datasets of historical lottery results, read by
 the LottoStat app over HTTPS (GitHub Raw or GitHub Pages). There is no server,
@@ -98,7 +98,7 @@ python -m scripts.validate && sha256sum -c checksums/SHA256SUMS
 git add catalog.json games checksums metadata && git commit -m "data: <games> update"
 ```
 
-The app reads `https://raw.githubusercontent.com/<owner>/lotto-data/main/`
+The app reads `https://raw.githubusercontent.com/<owner>/lotto_data/main/`
 with `LOTTO_DATA_FORMAT=catalog`.
 
 ## Licence

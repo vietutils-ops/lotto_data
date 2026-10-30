@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/viettran88/lotto-data/main/schemas/known_gaps.schema.json",
+  "$id": "https://raw.githubusercontent.com/vietutils-ops/lotto_data/main/schemas/known_gaps.schema.json",
   "title": "config/known_gaps.json: draw IDs knowingly missing",
   "type": "object",
   "required": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/viettran88/lotto-data/main/schemas/draws.schema.json",
+  "$id": "https://raw.githubusercontent.com/vietutils-ops/lotto_data/main/schemas/draws.schema.json",
   "title": "draws.json of a game (schema 2)",
   "type": "object",
   "required": [

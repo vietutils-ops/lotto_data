@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/viettran88/lotto-data/main/schemas/catalog.schema.json",
+  "$id": "https://raw.githubusercontent.com/vietutils-ops/lotto_data/main/schemas/catalog.schema.json",
   "title": "catalog.json: published datasets (schema 1)",
   "type": "object",
   "required": [
